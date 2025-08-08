@@ -1,5 +1,9 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import Header from "./_components/Header";
+import Footer from "./_components/Footer";
+import { Toaster } from "@/components/ui/sonner";
+
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -19,10 +23,14 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
+      <body suppressHydrationWarning={true}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+        <div className="md:px-10">
+          <Header />
+          {children}
+          <Toaster/>
+        </div>
+        <Footer />
       </body>
     </html>
   );
