@@ -2,9 +2,10 @@ import Image from 'next/image'
 import React from 'react'
 
 function Footer() {
+
     return (
-        <footer className="bg-gray-100">
-            <div className="mx-auto max-w-5xl justify-center text-center flex flex-col items-center px-4 py-16 sm:px-6 lg:px-8">
+        <footer  className="bg-gray-100">
+            <div id='#footer' className="mx-auto max-w-5xl justify-center text-center flex flex-col items-center px-4 py-16 sm:px-6 lg:px-8">
                 <Image src='/logo.svg'
                 alt='logo'
                 width={120}
@@ -16,28 +17,17 @@ function Footer() {
 
                 <ul className="mt-12 flex flex-wrap justify-center gap-6 md:gap-8 lg:gap-12">
                     <li>
-                        <a className="text-gray-700 transition hover:text-gray-700/75" href="#"> About </a>
+                        <a className="text-gray-700 transition hover:text-gray-700/75" href="/"> Home </a>
                     </li>
 
                     <li>
-                        <a className="text-gray-700 transition hover:text-gray-700/75" href="#"> Careers </a>
+                        <a className="text-gray-700 transition hover:text-gray-700/75" href="/explore"> Explore </a>
                     </li>
 
                     <li>
-                        <a className="text-gray-700 transition hover:text-gray-700/75" href="#"> History </a>
+                        <a className="text-gray-700 transition hover:text-gray-700/75" href="/contact"> Contact Us </a>
                     </li>
 
-                    <li>
-                        <a className="text-gray-700 transition hover:text-gray-700/75" href="#"> Services </a>
-                    </li>
-
-                    <li>
-                        <a className="text-gray-700 transition hover:text-gray-700/75" href="#"> Projects </a>
-                    </li>
-
-                    <li>
-                        <a className="text-gray-700 transition hover:text-gray-700/75" href="#"> Blog </a>
-                    </li>
                 </ul>
 
                 <ul className="mt-12 flex justify-center gap-6 md:gap-8">

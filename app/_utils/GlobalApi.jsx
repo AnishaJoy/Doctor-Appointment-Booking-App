@@ -39,14 +39,14 @@ const getUserBookingList = async (userEmail) => {
     );
 
     const data = await res.json();
-    console.log(data);
+    // console.log(data);
     return data;
   } catch (error) {
     console.error("Error fetching booking list:", error);
     return [];
   }
 };
-
+const deleteBooking = (documentId) => axiosClient.delete(`/appointments/${documentId}`)
 
 
 
@@ -59,4 +59,5 @@ export default {
     bookAppointment,
     // sendEmail
     getUserBookingList,
+    deleteBooking
 }

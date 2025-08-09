@@ -15,13 +15,15 @@ import { CalendarDays, Clock } from 'lucide-react';
 import { useKindeBrowserClient } from '@kinde-oss/kinde-auth-nextjs';
 import GlobalApi from '@/app/_utils/GlobalApi';
 import { toast } from 'sonner';
+import axios from 'axios';
+import moment from 'moment';
 
 function BookAppointment({ doctor }) {
     const [date, setDate] = useState(new Date());
     const [timeSlot, setTimeSlot] = useState([]);
     const [selectedTimeSlot, setSelectedTimeSlot] = useState(null);
     const { user } = useKindeBrowserClient();
-
+    const randomId = "AID" + Math.random().toString(36).substring(2, 8).toUpperCase();
     useEffect(() => {
         getTime();
     }, []);
@@ -47,25 +49,70 @@ function BookAppointment({ doctor }) {
         setTimeSlot(timeList);
     };
 
-    const saveBooking = () => {
+    const saveBooking = async () => {
         const data = {
             data: {
                 UserName: user.given_name + " " + user.family_name,
                 Email: user.email,
                 Time: selectedTimeSlot,
                 Date: date,
-                doctor: doctor.id
+                doctor: doctor.id,
+                Appointment_Id: randomId
             }
         }
-        GlobalApi.bookAppointment(data).then(resp => {
-            console.log(resp.data.data);
+        // GlobalApi.bookAppointment(data).then(resp => {
+        //     console.log(resp.data.data);
+        //     if (resp) {
+        //         toast("Booking Confirmation sent to your Mailbox")
+        //     }
+        // })
+
+        try {
+            const resp = await GlobalApi.bookAppointment(data);
             if (resp) {
-                // GlobalApi.sendEmail(data).then(resp => {
-                //     console.log(resp);
-                // })
-                toast("Booking Confirmation sent to your Mailbox")
+                toast("Booking Confirmation sent to your Mailbox", {
+                    style: { background: 'black', color: 'white', border: '1px solid black' }
+                });
+                await sendEmail(); // send email only after booking
             }
+        } catch (err) {
+            console.error("Booking failed:", err);
+        }
+    }
+
+    //for mail
+    function sendEmail() {
+        axios.post("http://localhost:1337/api/send-email", {
+            to: user.email,
+            subject: `Your Doctor Appointment Confirmation – [${doctor.Name}]`,
+            message: 
+            `<pre>
+Hello ${user.given_name + " " + user.family_name},
+
+Your appointment has been successfully confirmed.
+
+Appointment Details:
+- Appointment ID: ${randomId}
+- Restaurant Name: ${doctor.Name}
+- Address:  ${doctor.Address},
+- Contact: ${doctor.Phone}
+- Date: ${date}
+- Time: ${selectedTimeSlot}
+
+Please arrive at least 10 minutes before your assigned time. If you wish to make any changes or cancel your appointment, contact ${doctor.Phone}.
+
+We look forward to serving you.
+
+Best regards,
+${doctor.Name} Team
+            </pre>`
         })
+            .then(res => {
+                console.log(res.data);
+            })
+            .catch(err => {
+                console.error(err);
+            });
     }
 
     return (
@@ -139,7 +186,10 @@ function BookAppointment({ doctor }) {
                             <Button
                                 type="button"
                                 disabled={!(date && selectedTimeSlot)}
-                                onClick={() => saveBooking()}
+                                onClick={async () => {
+                                    await sendEmail();
+                                    saveBooking();
+                                }}
                                 className="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-4 py-2 rounded-md shadow-md transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
                             >
                                 Submit
