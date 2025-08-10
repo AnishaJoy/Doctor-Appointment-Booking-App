@@ -80,6 +80,8 @@ function BookAppointment({ doctor }) {
         }
     }
 
+    const formattedTime=moment(selectedTimeSlot,"h:mm A").format("hh:mm A");
+
     //for mail
     function sendEmail() {
         axios.post("http://localhost:1337/api/send-email", {
@@ -97,11 +99,11 @@ Appointment Details:
 - Address:  ${doctor.Address},
 - Contact: ${doctor.Phone}
 - Date: ${date}
-- Time: ${selectedTimeSlot}
+- Time: ${formattedTime}
 
 Please arrive at least 10 minutes before your assigned time. If you wish to make any changes or cancel your appointment, contact ${doctor.Phone}.
 
-We look forward to serving you.
+We look forward to treating you.
 
 Best regards,
 ${doctor.Name} Team
@@ -187,7 +189,7 @@ ${doctor.Name} Team
                                 type="button"
                                 disabled={!(date && selectedTimeSlot)}
                                 onClick={async () => {
-                                    await sendEmail();
+                                    await
                                     saveBooking();
                                 }}
                                 className="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-4 py-2 rounded-md shadow-md transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"

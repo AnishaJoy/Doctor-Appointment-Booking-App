@@ -35,7 +35,10 @@ function CategoryList() {
                     placeholder="Search category..."
                     className="text-sm sm:text-base px-3 py-2"
                 />
-                <CommandList className="overflow-visible">
+                <CommandList
+                    className="overflow-visible sm:overflow-visible max-h-none sm:max-h-none 
+                           max-h-[300px] overflow-y-auto sm:overflow-y-visible sm:max-h-full"
+                >
                     <CommandEmpty>No results found.</CommandEmpty>
                     <CommandGroup
                         heading="Suggestions"
@@ -49,7 +52,7 @@ function CategoryList() {
                                 <Link
                                     href={`/search/${encodeURIComponent(item.Name)}`}
                                     className={`p-2 sm:p-3 flex gap-2 sm:gap-3 text-sm sm:text-base text-cyan-800 items-center rounded-md cursor-pointer w-full
-                                        ${category === item.Name ? 'bg-cyan-100' : ''}`}
+                                    ${category === item.Name ? 'bg-cyan-100' : ''}`}
                                 >
                                     <Image
                                         src={item.Icon?.url || ''}
@@ -66,7 +69,8 @@ function CategoryList() {
                 </CommandList>
             </Command>
         </div>
-    )
+    );
+
 }
 
 export default CategoryList;
