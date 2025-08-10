@@ -29,7 +29,7 @@ const bookAppointment = (data) => axiosClient.post("/appointments", data);
 const getUserBookingList = async (userEmail) => {
   try {
     const res = await fetch(
-      `http://localhost:1337/api/appointments?filters[Email][$eqi]=${encodeURIComponent(userEmail)}&populate=doctor.Image`,
+      `https://doctor-appointment-booking-app-strapi.onrender.com/api/appointments?filters[Email][$eqi]=${encodeURIComponent(userEmail)}&populate=doctor.Image`,
       {
         method: "GET",
         headers: {
