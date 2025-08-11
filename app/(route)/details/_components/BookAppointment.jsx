@@ -106,7 +106,7 @@ Please arrive at least 10 minutes before your assigned time. If you wish to make
 We look forward to treating you.
 
 Best regards,
-${doctor.Name} Team
+Wellora
             </pre>`
         })
             .then(res => {
@@ -146,7 +146,7 @@ ${doctor.Name} Team
                             mode="single"
                             selected={date}
                             onSelect={setDate}
-                            disable={isPastDay}
+                            disabled={isPastDay}
                             className="rounded-lg border"
                         />
                     </div>

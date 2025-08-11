@@ -5,15 +5,15 @@ import GlobalApi from '../_utils/GlobalApi'
 function DoctorList({ doctorList, heading }) {
     return (
         <div className='mb-10 px-8'>
-            <h2 className='font-bold text-xl '>{heading} Doctors</h2>
+            <h2 className='font-bold text-2xl '>{heading} Doctors</h2>
             <div className='mt-4 grid grid-cols-2 gap-7 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4'>
                 {doctorList.length > 0 ? doctorList.map((item, index) => (
-                    <div key={item.id || index} className='border-[1px] rounded-lg p-3 cursor-pointer hover:border-cyan-700 hover:shadow-sm transition-all ease-in-out'>
+                    <div key={item.id || index} className='border-[1px] rounded-lg p-3 cursor-pointer hover:border-cyan-300 hover:shadow-sm transition-all ease-in-out'>
                         <Image src={GlobalApi.getStrapiMedia(item.Image?.url)}
                             alt='doctor'
                             width={500}
                             height={200}
-                            className='h-[200px] w-full object-cover rounded-lg'
+                            className='h-auto w-full object-cover rounded-lg'
                         />
                         <div className='mt-3 items-baseline flex flex-col gap-1'>
                             <h2 className='test-sm bg-cyan-100 p-1 rounded-full md:px-2 text-cyan-700'>{item.category?.Name}</h2>
