@@ -52,7 +52,7 @@ export const getStrapiMedia = (url) => {
   if (!url) return null;
   return url.startsWith('http')
     ? url
-    : `https://restaurant-booking-app-strapi.onrender.com${url}`;
+    : `https://doctor-appointment-booking-app-strapi.onrender.com${url}`;
 };
 
 export default {

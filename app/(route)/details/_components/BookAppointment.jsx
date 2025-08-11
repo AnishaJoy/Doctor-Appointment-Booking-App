@@ -95,7 +95,7 @@ Your appointment has been successfully confirmed.
 
 Appointment Details:
 - Appointment ID: ${randomId}
-- Restaurant Name: ${doctor.Name}
+- Doctor Name: ${doctor.Name}
 - Address:  ${doctor.Address},
 - Contact: ${doctor.Phone}
 - Date: ${date}
