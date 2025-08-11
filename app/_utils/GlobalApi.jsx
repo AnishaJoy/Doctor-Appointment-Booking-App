@@ -48,7 +48,12 @@ const getUserBookingList = async (userEmail) => {
 };
 const deleteBooking = (documentId) => axiosClient.delete(`/appointments/${documentId}`)
 
-
+export const getStrapiMedia = (url) => {
+  if (!url) return null;
+  return url.startsWith('http')
+    ? url
+    : `https://restaurant-booking-app-strapi.onrender.com${url}`;
+};
 
 export default {
     getCategory,
@@ -59,5 +64,6 @@ export default {
     bookAppointment,
     // sendEmail
     getUserBookingList,
-    deleteBooking
+    deleteBooking,
+    getStrapiMedia
 }

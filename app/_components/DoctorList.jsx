@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
-
+import GlobalApi from '../_utils/GlobalApi'
 function DoctorList({ doctorList, heading }) {
     return (
         <div className='mb-10 px-8'>
@@ -9,7 +9,7 @@ function DoctorList({ doctorList, heading }) {
             <div className='mt-4 grid grid-cols-2 gap-7 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4'>
                 {doctorList.length > 0 ? doctorList.map((item, index) => (
                     <div key={item.id || index} className='border-[1px] rounded-lg p-3 cursor-pointer hover:border-cyan-700 hover:shadow-sm transition-all ease-in-out'>
-                        <Image src={item.Image?.url}
+                        <Image src={GlobalApi.getStrapiMedia(item.Image?.url)}
                             alt='doctor'
                             width={500}
                             height={200}

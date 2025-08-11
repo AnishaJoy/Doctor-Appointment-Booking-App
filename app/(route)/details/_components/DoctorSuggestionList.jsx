@@ -52,7 +52,7 @@ function DoctorSuggestionList() {
                     }`}
                 >
                   <Image
-                    src={item.Image?.url || ''}
+                    src={GlobalApi.getStrapiMedia(item.Image?.url || '')}
                     alt="icon"
                     width={40}
                     height={40}

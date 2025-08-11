@@ -3,6 +3,7 @@ import { GraduationCap, MapPin } from 'lucide-react'
 import Image from 'next/image'
 import React from 'react'
 import BookAppointment from './BookAppointment';
+import GlobalApi from '@/app/_utils/GlobalApi';
 
 function DoctorDetail({ doctor }) {
 
@@ -21,7 +22,7 @@ function DoctorDetail({ doctor }) {
                 <div className="flex justify-center items-center">
                     {doctor?.Image?.url ? (
                         <Image
-                            src={doctor.Image?.url}
+                            src={GlobalApi.getStrapiMedia(doctor.Image?.url)}
                             width={200}
                             height={200}
                             alt="doctor-image"
@@ -56,7 +57,7 @@ function DoctorDetail({ doctor }) {
                         {SocialMediaList.map((item, index) => (
                             <Image
                                 key={index}
-                                src={item.icon}
+                                src={GlobalApi.getStrapiMedia(item.icon)}
                                 alt="social-icon"
                                 width={35}
                                 height={35}

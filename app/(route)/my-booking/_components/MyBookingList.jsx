@@ -28,12 +28,12 @@ function MyBookingList({ bookingList, expired, updateRecord }) {
                 >
                     {/* Doctor Image */}
                     <Image
-                        src={
+                        src={GlobalApi.getStrapiMedia(
                             item.doctor.Image?.url
                                 ? item.doctor.Image.url.startsWith('http')
                                     ? item.doctor.Image.url
                                     : `http://localhost:1337${item.doctor.Image.url}`
-                                : '/default-doctor.png'
+                                : '/default-doctor.png')
                         }
                         alt="doctor-image"
                         width={70}

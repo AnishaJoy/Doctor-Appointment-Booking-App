@@ -10,6 +10,7 @@ import {
     PopoverContent,
     PopoverTrigger,
 } from "@/components/ui/popover"
+import GlobalApi from '../_utils/GlobalApi';
 
 function Header() {
     const Menu = [
@@ -55,7 +56,7 @@ function Header() {
 
                 <Popover>
                     <PopoverTrigger>
-                        <Image src={user?.picture} alt='profile-image'
+                        <Image src={GlobalApi.getStrapiMedia(user?.picture)} alt='profile-image'
                             width={50}
                             height={50}
                             className='rounded-full' />

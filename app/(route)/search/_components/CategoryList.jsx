@@ -55,7 +55,7 @@ function CategoryList() {
                                     ${category === item.Name ? 'bg-cyan-100' : ''}`}
                                 >
                                     <Image
-                                        src={item.Icon?.url || ''}
+                                        src={GlobalApi.getStrapiMedia(item.Icon?.url || '')}
                                         alt="icon"
                                         width={25}
                                         height={25}
