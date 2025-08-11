@@ -8,7 +8,7 @@ function DoctorList({ doctorList, heading }) {
             <h2 className='font-bold text-2xl '>{heading} Doctors</h2>
             <div className='mt-4 grid grid-cols-2 gap-7 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4'>
                 {doctorList.length > 0 ? doctorList.map((item, index) => (
-                    <div key={item.id || index} className='border-[1px] rounded-lg p-3 cursor-pointer hover:border-cyan-300 hover:shadow-sm transition-all ease-in-out'>
+                    <div key={item.id || index} className='border-[1px] rounded-lg p-3 cursor-pointer hover:border-blue-300 hover:shadow-sm transition-all ease-in-out'>
                         <Image src={GlobalApi.getStrapiMedia(item.Image?.url)}
                             alt='doctor'
                             width={500}
@@ -21,7 +21,7 @@ function DoctorList({ doctorList, heading }) {
                             <h2 className='text-cyan-700 text-sm'>{item.Year_of_Experience}</h2>
                             <h2 className='text-gray-500 text-sm'>{item.Address}</h2>
                             <Link href={'/details/' + item?.slug} className='w-full'>
-                                <h2 className='p-2 px-3 border-[1px] border-cyan-700 text-cyan-700 rounded-full w-full text-center text-[11px]mt-2 cursor-pointer hover:bg-[var(--button-primary-color)] hover:text-white'>Book Now</h2>
+                                <h2 className='p-2 px-3 border-[1px] border-blue-300 text-cyan-700 rounded-full w-full text-center text-[11px]mt-2 cursor-pointer hover:bg-[var(--button-primary-color)] hover:text-white'>Book Now</h2>
                             </Link>
                         </div>
                     </div>
