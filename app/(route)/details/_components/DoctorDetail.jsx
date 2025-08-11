@@ -57,7 +57,7 @@ function DoctorDetail({ doctor }) {
                         {SocialMediaList.map((item, index) => (
                             <Image
                                 key={index}
-                                src={GlobalApi.getStrapiMedia(item.icon)}
+                                src={item.icon}
                                 alt="social-icon"
                                 width={35}
                                 height={35}
