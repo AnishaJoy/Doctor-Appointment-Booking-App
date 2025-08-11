@@ -11,13 +11,13 @@ function MyBookingList({ bookingList, expired, updateRecord }) {
     const onDeleteBooking = (item) => {
         // console.log(item)
         GlobalApi.deleteBooking(item.documentId).then(resp => {
-                console.log(resp)
-                if (resp) {
-                    toast('Booked Appointment Deleted Successfully!');
-                    updateRecord();
-                }
-       
-            })
+            console.log(resp)
+            if (resp) {
+                toast('Booked Appointment Deleted Successfully!');
+                updateRecord();
+            }
+
+        })
     }
     return (
         <div className="max-w-4xl mx-auto p-4 space-y-4">
@@ -27,7 +27,7 @@ function MyBookingList({ bookingList, expired, updateRecord }) {
                     className="flex items-center gap-6 bg-white shadow-md rounded-xl p-4 hover:shadow-lg transition-shadow border border-gray-100"
                 >
                     {/* Doctor Image */}
-                    <Image
+                    {/* <Image
                         src={GlobalApi.getStrapiMedia(
                             item.doctor.Image?.url
                                 ? item.doctor.Image.url.startsWith('http')
@@ -39,7 +39,16 @@ function MyBookingList({ bookingList, expired, updateRecord }) {
                         width={70}
                         height={70}
                         className="rounded-full object-cover h-[70px] w-[70px] border border-gray-200"
+                    /> */}
+
+                    <Image
+                        src={GlobalApi.getStrapiMedia(item.doctor?.Image?.url) || '/default-doctor.png'}
+                        alt="doctor-image"
+                        width={70}
+                        height={70}
+                        className="rounded-full object-cover h-[70px] w-[70px] border border-gray-200"
                     />
+
                     {/* Booking Details */}
                     <div className="flex flex-col gap-3 w-full">
                         {/* Doctor Name & Cancel Button */}

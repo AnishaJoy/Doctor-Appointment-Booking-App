@@ -84,7 +84,7 @@ function BookAppointment({ doctor }) {
 
     //for mail
     function sendEmail() {
-        axios.post("http://localhost:1337/api/send-email", {
+        axios.post("https://doctor-appointment-booking-app-strapi.onrender.com/api/send-email", {
             to: user.email,
             subject: `Your Doctor Appointment Confirmation – [${doctor.Name}]`,
             message: 
