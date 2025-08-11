@@ -4,12 +4,12 @@ import React from 'react'
 function Footer() {
 
     return (
-        <footer  className="bg-gray-100">
+        <footer className="bg-gray-100">
             <div id='#footer' className="mx-auto max-w-5xl justify-center text-center flex flex-col items-center px-4 py-16 sm:px-6 lg:px-8">
-                <Image src='/logo1.png'
-                alt='logo'
-                width={120}
-                height={50}/>
+                <Link href='/'><Image src='/logo1.png'
+                    alt='logo'
+                    width={120}
+                    height={50} /></Link>
 
                 <p className="mx-auto mt-6 max-w-md text-center leading-relaxed text-gray-500">
                     Your trusted platform to find and book appointments with experienced doctors across specialties. Fast, easy, and secure healthcare at your fingertips.
